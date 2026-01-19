@@ -24,7 +24,13 @@ on:
         required: true
         type: string
         default: 'office.mithuroy@gmail.com'
-
+ 
+  # -------------------------------
+  # Scheduled trigger (NEW)
+  # Runs every day at 9:00 AM BD
+  # -------------------------------
+  schedule:
+    - cron: '32 6 * * *'   # 03:00 UTC = 09:00 Bangladesh time
 # =================================================================
 # JOBS: Environment Setup & Test Execution
 # =================================================================
@@ -67,10 +73,13 @@ jobs:
       # -----------------------------------------------------------
       - name: "Step 5: Run Cucumber Tests"
         continue-on-error: true # Allows the pipeline to proceed to reporting even on failure
+        
         env:
-          # Mapping inputs to environment variables for cleaner command lines
-          TAGS: ${{ github.event.inputs.cucumber_tags }}
-          BROWSER: ${{ github.event.inputs.browser_name }}
+          # If workflow is scheduled → use @Smoke
+          # If workflow is manual → use input from UI
+          TAGS: ${{ github.event_name == 'schedule' && '@Smoke' || github.event.inputs.cucumber_tags }}
+          BROWSER: ${{ github.event_name == 'schedule' && 'edge-headless' || github.event.inputs.browser_name }}
+
         run: |
           mvn -B test \
           -Dcucumber.filter.tags="$TAGS" \

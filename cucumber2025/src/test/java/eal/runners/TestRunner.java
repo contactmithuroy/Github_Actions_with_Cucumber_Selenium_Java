@@ -23,7 +23,7 @@ import io.cucumber.junit.CucumberOptions;
 				"com.aventstack.extentreports.cucumber.adapter.ExtentCucumberAdapter:",
 				"eal.hooks.StepNameListener"
 		},
-		features = "src\\test\\resources\\features",
+		features = "src/test/resources/features",
 		glue = {"eal.step_definitions","eal.hooks"},
 		dryRun = false,
 		monochrome = true

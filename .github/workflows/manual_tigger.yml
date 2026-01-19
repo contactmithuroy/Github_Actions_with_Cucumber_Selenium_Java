@@ -30,7 +30,7 @@ on:
   # Runs every day at 9:00 AM BD
   # -------------------------------
   schedule:
-    - cron: '32 6 * * *'   # 03:00 UTC = 09:00 Bangladesh time
+    - cron: '36 18 * * *'   # 03:00 UTC = 09:00 Bangladesh time
 # =================================================================
 # JOBS: Environment Setup & Test Execution
 # =================================================================

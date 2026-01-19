@@ -1,4 +1,4 @@
-@login @homepage @allTest
+@login @homepage @allTest 
 Feature: Testing Homepage Items and Login Related test cases
 
 #------------------------------------------------------------------
@@ -35,7 +35,7 @@ Scenario: Verify Table Demo is available
 #------------------------------------------------------------------
 
 #Invalid user id and Invalid Password
-@TC_005
+@TC_005 @Smoke
 Scenario:Verify Verify logging in with invalid credentials in Login Homapage(both invalid)
 	Given Pass "mngr6467" on "UserID" Field
 	And Pass "000000" on "Password" Field
@@ -43,7 +43,7 @@ Scenario:Verify Verify logging in with invalid credentials in Login Homapage(bot
 	Then Click on "OK" button from the alert
 
 #Valid user id and invalid password
-@TC_006
+@TC_006 @Smoke
 Scenario:Verify Verify logging in with invalid credentials in Login Homapage(both invalid)
 	Given Pass "mngr646768" on "UserID" Field
 	And Pass "000000" on "Password" Field
@@ -51,7 +51,7 @@ Scenario:Verify Verify logging in with invalid credentials in Login Homapage(bot
 	Then Click on "OK" button from the alert
 
 #Invalid user id and valid password
-@TC_007
+@TC_007 @Smoke
 Scenario:Verify Verify logging in with invalid credentials in Login Homapage(both invalid)
 	Given Pass "mngr6467" on "UserID" Field
 	And Pass "nebEsAg" on "Password" Field
@@ -96,7 +96,7 @@ Scenario: Verify User can Clear userID Field after putting multiple Numeric user
 #------------------------------------------------------------------
 
 #User Data Table and List with Numeric value
-@TC_010
+@TC_010 @Smoke
 Scenario: Verify User can Clear userID Field after putting multiple Numeric userID by Mistake
 	Given I enter and immediately clear the following UserIDs:
 	|123456|
@@ -110,7 +110,7 @@ Scenario: Verify User can Clear userID Field after putting multiple Numeric user
 #------------------------------------------------------------------
 
 #Use DataTable and List Map (Key Value pare)
-@TC_011
+@TC_011 @Smoke
 Scenario: Verify multiple UserID and Password combinations
 	Given I try the following credentials:
 	|UserID      | Password |
@@ -126,7 +126,7 @@ Scenario: Verify multiple UserID and Password combinations
 #------------------------------------------------------------------
 
 #User Data Table and List with String Vlaue
-@TC_012
+@TC_012 @Smoke
 Scenario: Verify User can Clear userID Field after putting multiple String userID by Mistake
 	Given I enter and immediately clear the following UserIDs:
 	|"Abcd12"|
@@ -139,7 +139,7 @@ Scenario: Verify User can Clear userID Field after putting multiple String userI
 #------------------------------------------------------------------
 
 #Login with valid credentials
-@TC_013
+@TC_013 @Smoke
 Scenario Outline: Verify logging in with valid credentials in Login Homepage
 	Given Pass "mngr652043" on "UserID" Field
 	And Pass "UmEguba" on "Password" Field

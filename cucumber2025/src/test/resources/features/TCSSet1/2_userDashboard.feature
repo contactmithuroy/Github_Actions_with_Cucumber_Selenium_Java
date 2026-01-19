@@ -24,7 +24,7 @@ Scenario: Verify Manager and Logout button is visible in the left side
 # Menu Navigation Validation
 #------------------------------------------------------------------
 
-@TC_015
+@TC_015 @Smoke
 Scenario: Verify Flash Movie Demo sub-menu visibility under Selenium menu
 	Given Validate User landed on login homepage
 	Then Click on "Selenium" Drop down from the top
@@ -36,7 +36,7 @@ Scenario: Verify Flash Movie Demo sub-menu visibility under Selenium menu
 #------------------------------------------------------------------
 
 #Insert input field using fetching the excel file.
-@TC_016
+@TC_016 @Smoke
 Scenario: Add New Customer using Excel Data
 	Given I open the "New Customer" page with title " Guru99 Bank New Customer Entry Page"
 	When I fill the form using file "testcases_for_Automation.xlsx" and sheet "Invalid_Pin_Data" with fields:

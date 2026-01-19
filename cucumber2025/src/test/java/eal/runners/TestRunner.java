@@ -30,8 +30,8 @@ import io.cucumber.junit.CucumberOptions;
 		monochrome = true
 )
 
-public class ealrunner {
-	public static final Logger logger = LogManager.getLogger(ealrunner.class);
+public class TestRunner {
+	public static final Logger logger = LogManager.getLogger(TestRunner.class);
 
 	@BeforeClass
 	public static void globalSetup() {

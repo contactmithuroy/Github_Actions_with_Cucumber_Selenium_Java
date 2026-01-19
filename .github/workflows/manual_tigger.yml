@@ -1,4 +1,4 @@
-name: "EAL Automation Pipeline"
+name: Automation Pipeline"
 
 # =================================================================
 # TRIGGER: Manual UI with Custom Inputs
@@ -7,7 +7,7 @@ on:
   workflow_dispatch:
     inputs:
       cucumber_tags:
-        description: "Cucumber Tag (e.g., @InvalidLogin)"
+        description: "Cucumber Tag (e.g., @TC_015)"
         required: true
         type: string
         default: '@InvalidLogin' # Default tag as requested

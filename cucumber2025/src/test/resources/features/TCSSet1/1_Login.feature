@@ -12,15 +12,15 @@ Background:
 # Smoke Test Cases – Homepage UI Validation
 #------------------------------------------------------------------
 
-@TC_001 @smoke
+@TC_001 @Smoke
 Scenario: Verify user landed on Homepage and UserID is available
 	Then Verify "UserID" is visible
 
-@TC_002 @smoke
+@TC_002 @Smoke
 Scenario: Verify Password input is available
 	Then Verify "Password" is visible
 
-@TC_003 @smoke
+@TC_003 @Smoke
 Scenario: Verify LOGIN is available
 	Then Verify LOGIN is visible
 

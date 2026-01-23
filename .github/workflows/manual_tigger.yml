@@ -108,7 +108,7 @@ jobs:
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
 
-          # ✅ FIXED: handle schedule vs manual
+          # Handle schedule vs manual
           to: ${{ github.event_name == 'schedule' && 'office.mithuroy@gmail.com' || inputs.email_to }}
 
           subject: >

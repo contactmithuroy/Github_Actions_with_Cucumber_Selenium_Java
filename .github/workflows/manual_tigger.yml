@@ -10,7 +10,7 @@ on:
         description: "Cucumber Tag (e.g., @TC_015)"
         required: true
         type: string
-        default: '@InvalidLogin' # Default tag as requested
+        default: '@allTest' # Default tag as requested
       browser_name:
         description: "Execution Browser"
         required: true
@@ -30,7 +30,7 @@ on:
   # Runs every day at 9:00 AM BD
   # -------------------------------
   schedule:
-    - cron: '32 6 * * *'   # 03:00 UTC = 09:00 Bangladesh time
+    - cron: '0 3 * * *'   # 03:00 UTC = 09:00 Bangladesh time
 # =================================================================
 # JOBS: Environment Setup & Test Execution
 # =================================================================
@@ -99,22 +99,32 @@ jobs:
           path: "cucumber2025/Results/test-reports*/PipeLine_mvnRun_Report/mavenRUN.html"
 
       - name: "Step 7: Email Extent Report"
-        if: always() # Sends email regardless of test result
+        if: always()
         uses: dawidd6/action-send-mail@v3
         with:
           server_address: smtp.gmail.com
           server_port: 465
           secure: true
-          # These values come from your GitHub Repository Secrets
-          username: ${{ secrets.MAIL_USERNAME }} 
-          password: ${{ secrets.MAIL_PASSWORD }} 
-          subject: "Test Results: ${{ inputs.cucumber_tags }}"
-          to: ${{ inputs.email_to }}
+          username: ${{ secrets.MAIL_USERNAME }}
+          password: ${{ secrets.MAIL_PASSWORD }}
+
+          # Handle schedule vs manual
+          to: ${{ github.event_name == 'schedule' && 'office.mithuroy@gmail.com' || inputs.email_to }}
+
+          subject: >
+            Test Results:
+            ${{ github.event_name == 'schedule' && '@Smoke' || inputs.cucumber_tags }}
+
           from: "Automation Bot <${{ secrets.MAIL_USERNAME }}>"
+
           body: |
             The automation run is complete.
-            - Tag: ${{ inputs.cucumber_tags }}
-            - Browser: ${{ inputs.browser_name }}
-            
+
+            - Trigger Type: ${{ github.event_name }}
+            - Tag: ${{ github.event_name == 'schedule' && '@Smoke' || inputs.cucumber_tags }}
+            - Browser: ${{ github.event_name == 'schedule' && 'edge-headless' || inputs.browser_name }}
+
             Please find the Extent Report attached.
+
           attachments: "cucumber2025/Results/test-reports*/PipeLine_mvnRun_Report/mavenRUN.html"
+

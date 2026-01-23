@@ -10,7 +10,7 @@ on:
         description: "Cucumber Tag (e.g., @TC_015)"
         required: true
         type: string
-        default: '@InvalidLogin' # Default tag as requested
+        default: '@allTest' # Default tag as requested
       browser_name:
         description: "Execution Browser"
         required: true

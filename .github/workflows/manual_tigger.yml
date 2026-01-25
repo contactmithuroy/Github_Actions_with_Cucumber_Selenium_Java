@@ -1,4 +1,4 @@
-name: Automation Pipeline"
+name: Cucumber Automation Pipeline"
 
 # =================================================================
 # TRIGGER: Manual UI with Custom Inputs
@@ -29,8 +29,8 @@ on:
   # Scheduled trigger (NEW)
   # Runs every day at 9:00 AM BD
   # -------------------------------
-  schedule:
-    - cron: '0 3 * * *'   # 03:00 UTC = 09:00 Bangladesh time
+  #schedule:
+   # - cron: '0 3 * * *'   # 03:00 UTC = 09:00 Bangladesh time
 # =================================================================
 # JOBS: Environment Setup & Test Execution
 # =================================================================
